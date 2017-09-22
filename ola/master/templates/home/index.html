@@ -1,0 +1,53 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+{% block home_active %}active{% endblock %}
+     {% block stat %}
+{% endblock %}
+
+
+{% block body %}
+<br><br><br>
+<a href="{% url 'master:index' %}" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </a>
+<div class="col-sm-8 col-sm-offset-2">
+
+          <table class="table">
+    <thead>
+        <tr>
+
+            <th>Request ID</th>
+            <th>Customer ID</th>
+            <th>Time Elapsed</th>
+            <th>Status</th>
+            <th>Driver</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if Request %}
+
+            {% for album in Request %}
+                <tr>
+
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.Cust_ID }}</td>
+                    <td>{{ album.req_time }}</td>
+                    {% if album.pickup is None %}
+                    <td>Waiting</td>
+                    {% elif  album.drop is None %}
+                    <td>Ongoing</td>
+                    {% else %}
+                    <td>Completed</td>
+                    {% endif %}
+                    <td>{{ album.Driver_ID }}</td>
+                </tr>
+
+            {% endfor %}
+    {% endif %}
+
+    </tbody>
+</table>
+
+        </div>
+
+{% endblock %}

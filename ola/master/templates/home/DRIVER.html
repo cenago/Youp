@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<br><br><br>
+<h1>DRIVER's</h1>
+{% if completed %}
+
+            {% for album in completed %}
+                <ul>
+
+                    <li><a href="{% url 'master:DRIVER' album.Driver_ID %}" >{{ album.Driver_ID }}</a></li>
+                    <li>{{ album.user_name }}</li>
+
+                </ul>
+
+            {% endfor %}
+    {% endif %}
+
+
+{% endblock %}

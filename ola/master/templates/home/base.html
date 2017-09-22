@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>You</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% load staticfiles %}
+
+  <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+
+{% block link %}
+{% endblock %}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body >
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+
+      <a class="brand navbar-brand" href="{% url 'master:index' %}">
+        <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span> YouPlus </a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav  ">
+        <li class="{% block home_active %}{% endblock %}"><a href="{% url 'master:index' %}">  DASHBOARD</a></li>
+        <li class="{% block project_active %}{% endblock %}"><a href="{% url 'master:customerapp' %}">CUSTOMER</a></li>
+        <li class="{% block contact_active %}{% endblock %}"><a href="{% url 'master:DRIVERapp' %}">DRIVER</a></li></ul>
+
+    </div>
+  </div>
+</nav>
+ <!--<img  class="img-responsive"  src="{% static 'home/img/banner.png' %}" > --><!--height="320" -->
+<!--<div class="col-sm-12 border" style=" background-image: url({% static 'home/img/border.png' %});" > </div>-->
+
+
+{% block body %}
+
+{% endblock %}
+</body>
+</html>

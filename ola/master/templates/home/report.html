@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+
+{% block body %}
+ {% load staticfiles %}
+<br><br><br><h1>Waiting</h1>
+{% if Waiting %}
+
+            {% for album in Waiting %}
+                <ul>
+
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.Cust_ID }}</td>
+                    <td>{{ album.req_time }}</td>
+                    <td>{{ album.Status }}</td>
+                    <td>{{ album.Driver_ID }}</td>
+                    <td><a href="{% url 'master:DRIVERselect' album.id album.Cust_ID d_id %}" class="btn btn-primary btn-sm {{ message }}" role="button">Select</a></td>
+                    <td></td>
+                </ul>
+
+            {% endfor %}
+    {% endif %}
+<br><br><br><h1>Ongoing</h1>
+{% if Ongoing %}
+
+            {% for album in Ongoing %}
+                <ul>
+
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.Cust_ID }}</td>
+                    <td>{{ album.req_time }}</td>
+                    <td>{{ album.Status }}</td>
+                    <td>{{ album.Driver_ID }}</td>
+                </ul>
+
+            {% endfor %}
+    {% endif %}
+
+<br><br><br><h1>completed</h1>
+{% if completed %}
+
+            {% for album in completed %}
+                <ul>
+
+                    <td>{{ album.id }}</td>
+                    <td>{{ album.Cust_ID }}</td>
+                    <td>{{ album.req_time }}</td>
+                    <td>{{ album.Status }}</td>
+                    <td>{{ album.Driver_ID }}</td>
+                </ul>
+
+            {% endfor %}
+    {% endif %}
+{% endblock %}
+
